@@ -1,93 +1,41 @@
-load("@rules_foreign_cc//tools/build_defs:cmake.bzl", "cmake_external")
+# Description:
+#   OpenCV libraries for video/image processing on Linux
 
-CV_LIB_NAMES = [
-    "calib3d",
-    "features2d",
-    "flann",
-    "highgui",
-    "imgcodecs",
-    "imgproc",
-    "ml",
-    "objdetect",
-    "photo",
-    "stitching",
-    "superres",
-    "video",
-    "videoio",
-    "videostab",
-    "core",  # Core needs to be last for proper linking
-]
+licenses(["notice"])  # BSD license
 
-CV_STATIC_LIBS = [
-  "libopencv_%s.a" % name
-  for name in CV_LIB_NAMES
-]
+exports_files(["LICENSE"])
 
-cmake_external(
+# The following build rule assumes that OpenCV is installed by
+# 'apt-get install libopencv-core-dev libopencv-highgui-dev \'
+# '                libopencv-calib3d-dev libopencv-features2d-dev \'
+# '                libopencv-imgproc-dev libopencv-video-dev'
+# on Debian Buster/Ubuntu 18.04.
+# If you install OpenCV separately, please modify the build rule accordingly.
+cc_library(
     name = "opencv",
-    cache_entries = {
-        "CMAKE_BUILD_TYPE": "Release",
-        "ENABLE_PIC": "TRUE",
-        "BUILD_SHARED_LIBS": "OFF",
-        "BUILD_TESTS": "OFF",
-        "BUILD_PERF_TESTS": "OFF",
-        "BUILD_opencv_ts": "OFF",
-        "BUILD_opencv_aruco": "OFF",
-        "BUILD_opencv_bgsegm": "OFF",
-        "BUILD_opencv_bioinspired": "OFF",
-        "BUILD_opencv_ccalib": "OFF",
-        "BUILD_opencv_datasets": "OFF",
-        "BUILD_opencv_dnn": "OFF",
-        "BUILD_opencv_dnn_objdetect": "OFF",
-        "BUILD_opencv_dpm": "OFF",
-        "BUILD_opencv_face": "OFF",
-        "BUILD_opencv_fuzzy": "OFF",
-        "BUILD_opencv_hfs": "OFF",
-        "BUILD_opencv_img_hash": "OFF",
-        "BUILD_opencv_js": "OFF",
-        "BUILD_opencv_line_descriptor": "OFF",
-        "BUILD_opencv_phase_unwrapping": "OFF",
-        "BUILD_opencv_plot": "OFF",
-        "BUILD_opencv_quality": "OFF",
-        "BUILD_opencv_reg": "OFF",
-        "BUILD_opencv_rgbd": "OFF",
-        "BUILD_opencv_saliency": "OFF",
-        "BUILD_opencv_shape": "OFF",
-        "BUILD_opencv_structured_light": "OFF",
-        "BUILD_opencv_surface_matching": "OFF",
-        "BUILD_opencv_world": "OFF",
-        "BUILD_opencv_xobjdetect": "OFF",
-        "BUILD_opencv_xphoto": "OFF",
-        "CV_ENABLE_INTRINSICS": "ON",
-        "CV_TRACE": "OFF",
-        "OPENCV_FORCE_3RDPARTY_BUILD": "ON",
-        "WITH_EIGEN": "ON",
-        "WITH_PTHREADS": "ON",
-        "WITH_JPEG": "OFF",
-        "WITH_PNG": "ON",
-        "WITH_TIFF": "OFF",
-        "WITH_IPP": "OFF",
-        "WITH_ITT": "OFF",
-        "WITH_CUFFT": "OFF",
-        "WITH_FFMPEG": "OFF",
-        "WITH_GSTREAMER": "OFF",
-        "WITH_GIGEAPI": "OFF",
-        "WITH_GTK": "OFF",
-        "WITH_JASPER": "OFF",
-        "WITH_OPENCL": "OFF",
-        "WITH_OPENEXR": "OFF",
-        "WITH_TBB": "OFF",
-        "WITH_WEBP": "OFF",
-    },
-    lib_source = "@opencv//:all",
-    make_commands = [
-        "make -j `nproc`",
-        "make install",
+    hdrs = glob([
+        # For OpenCV 4.x
+        #"include/aarch64-linux-gnu/opencv4/opencv2/cvconfig.h",
+        #"include/arm-linux-gnueabihf/opencv4/opencv2/cvconfig.h",
+        #"include/x86_64-linux-gnu/opencv4/opencv2/cvconfig.h",
+        #"include/opencv4/opencv2/**/*.h*",
+    ]),
+    includes = [
+        # For OpenCV 4.x
+        #"include/aarch64-linux-gnu/opencv4/",
+        #"include/arm-linux-gnueabihf/opencv4/",
+        #"include/x86_64-linux-gnu/opencv4/",
+        #"include/opencv4/",
     ],
-    static_libraries = CV_STATIC_LIBS,
+    linkopts = [
+        "-l:libopencv_core.so",
+        "-l:libopencv_calib3d.so",
+        "-l:libopencv_features2d.so",
+        "-l:libopencv_highgui.so",
+        "-l:libopencv_imgcodecs.so",
+        "-l:libopencv_imgproc.so",
+        "-l:libopencv_video.so",
+        "-l:libopencv_videoio.so",
+    ],
     visibility = ["//visibility:public"],
-    deps = [
-        "@eigen_archive//:eigen3",
-        "@libpng",
-    ],
 )

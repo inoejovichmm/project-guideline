@@ -29,8 +29,8 @@ android_library(
     manifest = "AndroidManifest.xml",
     resource_files = glob(["res/**"]),
     deps = [
-        "//google/protobuf:duration_java_proto_lite",
-        "//java/com/google/protobuf/util:time_lite",
+        "//third_party/protobuf:duration_java_proto_lite",
+#        "//java/com/google/protobuf/util:time_lite",
         "//project_guideline/proto:guideline_engine_config_java_proto_lite",
         "//third_party/hilt:android_entry_point",
         "@maven//:androidx_annotation_annotation",
@@ -53,7 +53,7 @@ cc_library(
     name = "opencv_native_lib",
     srcs = select({
         "@mediapipe//mediapipe:android_arm64": ["@android_opencv//:libopencv_java3_so_arm64-v8a"],
-        "@mediapipe//mediapipe:android_armeabi": ["@android_opencv//:libopencv_java3_so_armeabi-v7a"],
+#        "@mediapipe//mediapipe:android_armeabi": ["@android_opencv//:libopencv_java3_so_armeabi-v7a"],
         "@mediapipe//mediapipe:android_arm": ["@android_opencv//:libopencv_java3_so_armeabi-v7a"],
         "@mediapipe//mediapipe:android_x86": ["@android_opencv//:libopencv_java3_so_x86"],
         "@mediapipe//mediapipe:android_x86_64": ["@android_opencv//:libopencv_java3_so_x86_64"],
