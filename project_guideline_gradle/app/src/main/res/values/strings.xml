@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">GuidelineApplication</string>
+
+    <string name="arcore_incompatible_error" description="Error message indicating the device is not compatible with ARCore. [CHAR_LIMIT=NONE]">Device is incompatible with ARCore</string>
+    <string name="arcore_declined_error" description="Error message indicating that ARCore must be installed to use the app. [CHAR_LIMIT=NONE]">ARCore must be installed</string>
+    <string name="arcore_fatal_error" description="Error message indicating there was a fatal error installing ARCore. [CHAR_LIMIT=NONE]">Error installing ARCore</string>
+
+    <!-- Title for a dialog to notify the user that device permissions are required. [CHAR LIMIT=100] -->
+    <string name="permissions_required_dialog_title">Permissions required</string>
+
+    <!-- Dialog message asking the user to grant required device permissions. [CHAR LIMIT=NONE] -->
+    <string name="permissions_required_dialog_message">Please grant the required permissions from settings and try again</string>
+
+    <!-- Dialog button for application settings. [CHAR LIMIT=30] -->
+    <string name="dialog_settings">Settings</string>
+
+    <!-- Dialog button to cancel. [CHAR LIMIT=30] -->
+    <string name="dialog_cancel">Cancel</string>
+</resources>

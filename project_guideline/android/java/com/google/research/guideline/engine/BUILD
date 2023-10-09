@@ -59,4 +59,5 @@ cc_library(
         "//conditions:default": [],
     }),
     alwayslink = 1,
+    visibility = [ "//visibility:public" ]
 )

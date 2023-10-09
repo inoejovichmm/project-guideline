@@ -58,6 +58,7 @@ cc_binary(
         ":jni.lds",
         "@arcore_android_aar//:arcore_sdk_c",
     ],
+    visibility = [ "//visibility:public" ]
 )
 
 cc_library(
