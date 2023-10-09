@@ -79,14 +79,14 @@ class RequiredPermissionsHelper internal constructor(private val activity: Activ
                 .setMessage(activity.getString(R.string.permissions_required_dialog_message))
                 .setPositiveButton(
                     activity.getString(R.string.dialog_settings)
-                ) { dialog: DialogInterface, which: Int ->
+                ) { dialog: DialogInterface, _: Int ->
                     launchAppSettings()
                     dialog.dismiss()
                 }
                 .setNegativeButton(
                     activity.getString(R.string.dialog_cancel)
-                ) { dialog: DialogInterface, which: Int -> dialog.dismiss() }
-                .setOnDismissListener { dialog: DialogInterface? -> activity.finish() }
+                ) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+                .setOnDismissListener { activity.finish() }
                 .show()
         }
     }
