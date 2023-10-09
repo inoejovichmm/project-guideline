@@ -1,1 +1,0 @@
-bazelisk build --config=android_arm64 --spawn_strategy=local --platforms=@mediapipe//mediapipe:android_arm64_platform @android_opencv//:libopencv_java3_so_arm64-v8a #:guideline_lib
