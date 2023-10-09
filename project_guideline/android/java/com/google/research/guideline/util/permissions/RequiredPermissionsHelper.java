@@ -26,17 +26,13 @@ import androidx.activity.result.ActivityResultCaller;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions;
 import androidx.core.content.ContextCompat;
-import dagger.hilt.android.scopes.ActivityScoped;
 import java.util.Map;
-import javax.inject.Inject;
 
 /** Helper for checking that required runtime permissions have been granted. */
-@ActivityScoped
 public final class RequiredPermissionsHelper {
   private static final String TAG = "PermissionsHelper";
   private final Activity activity;
 
-  @Inject
   RequiredPermissionsHelper(Activity activity) {
     this.activity = activity;
   }

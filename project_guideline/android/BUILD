@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@build_bazel_rules_android//android:rules.bzl", "android_binary")
+#load("@build_bazel_rules_android//android:rules.bzl", "android_binary")
 
 package(
     default_applicable_licenses = ["//:license"],

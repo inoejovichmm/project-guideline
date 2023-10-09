@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@build_bazel_rules_android//android:rules.bzl", "android_library")
+#load("@build_bazel_rules_android//android:rules.bzl", "android_library")
 
 package(
     default_applicable_licenses = ["//:license"],
@@ -28,10 +28,8 @@ android_library(
     manifest = "AndroidManifest.xml",
     resource_files = glob(["res/**"]),
     deps = [
+        "//third_party:androidx_core",
         "//project_guideline/android/java/com/google/research/guideline/engine",
         "//project_guideline/android/java/com/google/research/guideline/util/permissions",
-        "//third_party/hilt:android_entry_point",
-        "@maven//:androidx_appcompat_appcompat",
-        "@maven//:com_google_code_findbugs_jsr305",
     ],
 )

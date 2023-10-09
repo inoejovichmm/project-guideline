@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@build_bazel_rules_android//android:rules.bzl", "android_library")
+#load("@build_bazel_rules_android//android:rules.bzl", "android_library")
 
 package(default_applicable_licenses = ["//:license"])
 
@@ -26,10 +26,7 @@ android_library(
         "//visibility:public",
     ],
     deps = [
-        "//:dagger-android",
-        "//third_party/hilt:scopes",
-        "@maven//:androidx_activity_activity",
-        "@maven//:androidx_appcompat_appcompat",
-        "@maven//:androidx_core_core",
+        "//third_party:androidx_core",
+        "//third_party:androidx_activity",
     ],
 )

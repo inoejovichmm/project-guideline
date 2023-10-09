@@ -19,16 +19,13 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.research.guideline.engine.NativeEngineFragment;
 import com.google.research.guideline.util.permissions.RequiredPermissionsHelper;
-import dagger.hilt.android.AndroidEntryPoint;
 import javax.annotation.Nullable;
-import javax.inject.Inject;
 
 /** Main Guideline activity. */
-@AndroidEntryPoint(AppCompatActivity.class)
-public final class GuidanceActivity extends Hilt_GuidanceActivity {
+public final class GuidanceActivity extends AppCompatActivity {
   private static final String[] REQUIRED_PERMISSIONS = {Manifest.permission.CAMERA};
 
-  @Inject RequiredPermissionsHelper permissionsHelper;
+  RequiredPermissionsHelper permissionsHelper = new RequiredPermissionsHelper(this);
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {

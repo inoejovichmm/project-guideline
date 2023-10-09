@@ -1,0 +1,26 @@
+################ TENSORFLOW ################
+# TensorFlow repo should always go after the other external dependencies.
+# TF on 2023-07-26.
+TENSORFLOW_COMMIT = "e92261fd4cec0b726692081c4d2966b75abf31dd"
+# curl -L https://github.com/tensorflow/tensorflow/archive/<TENSORFLOW_GIT_COMMIT>.tar.gz | shasum -a 256
+TENSORFLOW_SHA = "478a229bd4ec70a5b568ac23b5ea013d9fca46a47d6c43e30365a0412b9febf4"
+http_archive(
+    name = "org_tensorflow",
+    urls = [ "https://github.com/tensorflow/tensorflow/archive/%s.tar.gz" % TENSORFLOW_COMMIT ],
+    #patches = [
+    #    "@//third_party:org_tensorflow_compatibility_fixes.diff",
+    #    "@//third_party:org_tensorflow_system_python.diff",
+        # Diff is generated with a script, don't update it manually.
+    #    "@//third_party:org_tensorflow_custom_ops.diff",
+    #],
+    #patch_args = [ "-p1" ],
+    strip_prefix = "tensorflow-%s" % TENSORFLOW_COMMIT,
+    sha256 = TENSORFLOW_SHA,
+)
+
+load("@org_tensorflow//tensorflow:workspace3.bzl", "tf_workspace3")
+tf_workspace3()
+
+load("@org_tensorflow//tensorflow:workspace2.bzl", "tf_workspace2")
+tf_workspace2()
+################ END TENSORFLOW ################

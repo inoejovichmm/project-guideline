@@ -1,4 +1,5 @@
-docker run -it --rm \
-    --platform linux/amd64 \
-    -v $(pwd):/app project-guideline-build-1 \
-    bazelisk build --config=android_arm64 --compilation_mode=opt --spawn_strategy=local //project_guideline/android:guideline_app
+bazelisk build \
+    --config=android_arm64 \
+    --spawn_strategy=local \
+    --platforms=@//:android_arm64 \
+    //project_guideline/android/java/com/google/research/guideline/engine:native_libs

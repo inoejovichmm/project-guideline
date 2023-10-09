@@ -47,15 +47,13 @@ import com.google.research.guideline.proto.LegacySoundPackOptions.LegacySoundPac
 import com.google.research.guideline.proto.LocalTemporalRegressionBasedGuidelineAggregatorOptions;
 import com.google.research.guideline.proto.OccupancyMapOptions;
 import com.google.research.guideline.proto.PointCloudOptions;
-import dagger.hilt.android.AndroidEntryPoint;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.annotation.Nullable;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 /** Fragment for the Guideline Native Engine. */
-@AndroidEntryPoint(Fragment.class)
-public final class NativeEngineFragment extends Hilt_NativeEngineFragment {
+public final class NativeEngineFragment extends Fragment {
   private static final String TAG = "NativeEngineFragment";
 
   // Obstacle-only mode will only detect obstacles and not guideline navigation.

@@ -25,6 +25,12 @@ alias(
 )
 
 alias(
+    name = "util_java",
+    actual = "@com_google_protobuf//:protobuf_java_util",
+    visibility = ["//visibility:public"],
+)
+
+alias(
     name = "duration_cc_proto",
     actual = "@com_google_protobuf//:protobuf",
     visibility = ["//visibility:public"],

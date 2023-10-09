@@ -100,7 +100,7 @@ cc_library(
         "@com_google_absl//absl/status:statusor",
         "@com_google_absl//absl/synchronization",
         "@eigen_archive//:eigen3",
-        #"@org_tensorflow//tensorflow/lite/delegates/gpu:delegate",  # keep dep
+        "@org_tensorflow//tensorflow/lite/delegates/gpu:delegate",  # keep dep
     ],
 )
 

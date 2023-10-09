@@ -16,7 +16,7 @@
 
 -->
 <resources>
-  <style name="Theme.Guidance" parent="@style/Theme.AppCompat.NoActionBar">
+  <style name="Theme.Guidance">
     <item name="android:windowFullscreen">true</item>
     <item name="android:windowContentOverlay">@null</item>
     <item name="android:windowBackground">@android:color/black</item>

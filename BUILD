@@ -13,7 +13,6 @@
 # limitations under the License.
 
 load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
-load("@dagger//:workspace_defs.bzl", "dagger_android_rules", "hilt_android_rules")
 load("@rules_license//rules:license.bzl", "license")
 
 licenses(["notice"])
@@ -35,21 +34,21 @@ package_group(
 # tests and utilities using swiftshader on machines that do not have a GPU.
 # Example: bazelisk test --define MEDIAPIPE_DISABLE_GPU=1 --//:gl=swiftshader \
 #                //project_guideline/visualization:all
-string_flag(
-    name = "gl",
-    build_setting_default = "system",
-    values = [
-        "system",
-        "swiftshader",
-    ],
-)
+# string_flag(
+#     name = "gl",
+#     build_setting_default = "system",
+#     values = [
+#         "system",
+#         "swiftshader",
+#     ],
+# )
 
-config_setting(
-    name = "swiftshader",
-    flag_values = {
-        ":gl": "swiftshader",
-    },
-)
+# config_setting(
+#     name = "swiftshader",
+#     flag_values = {
+#         ":gl": "swiftshader",
+#     },
+# )
 
 platform(
     name = "android_arm64",
@@ -58,7 +57,3 @@ platform(
         "@platforms//cpu:arm64",
     ],
 )
-
-dagger_android_rules()
-
-hilt_android_rules()

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@build_bazel_rules_android//android:rules.bzl", "android_library")
+#load("@build_bazel_rules_android//android:rules.bzl", "android_library")
 
 package(
     default_applicable_licenses = ["//:license"],
@@ -29,6 +29,5 @@ android_library(
     resource_files = glob(["res/**"]),
     deps = [
         "//project_guideline/android/java/com/google/research/guideline/guidance",
-        "//third_party/hilt:hilt_android_app",
     ],
 )

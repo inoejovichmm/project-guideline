@@ -15,8 +15,6 @@
 package com.google.research.guideline;
 
 import android.app.Application;
-import dagger.hilt.android.HiltAndroidApp;
 
 /** Project Guideline Application. */
-@HiltAndroidApp(Application.class)
-public final class GuidelineApplication extends Hilt_GuidelineApplication {}
+public final class GuidelineApplication extends Application {}
